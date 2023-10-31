@@ -6,7 +6,10 @@ import getCategories from "@/actions/getCategories";
 import NavbarActions from "@/components/navbar-actions";
 
 const Navbar = async () => {
-  const categories = await getCategories();
+  let categories;
+  try {
+    categories = await getCategories();
+  } catch (error) {}
 
   return (
     <header className="border-b">
@@ -15,7 +18,15 @@ const Navbar = async () => {
           <Link href={"/"} className="ml-4 flex lg:ml-0 gap-x-2">
             <p className="font-bold text-xl">Store</p>
           </Link>
-          <MainNav data={categories} />
+          {categories ? (
+            <MainNav data={categories} />
+          ) : (
+            <div className="mx-6 flex items-center space-x-4 lg:space-x-6">
+              <p className="text-sm font-medium transition-colors hover:text-black">
+                Error getting data, Refresh?
+              </p>
+            </div>
+          )}
           <NavbarActions />
         </div>
       </Container>
