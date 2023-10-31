@@ -14,11 +14,8 @@ const HomePage = async () => {
   } catch (error) {}
   let billboard;
   try {
-    billboard = await getBillboard(`ff90d959-0dbd-470d-b344-36ee0dce0244`);
+    billboard = await getBillboard(`0f0cc325-cb27-413c-b1bb-b8f69fb89f18`);
   } catch (error) {}
-
-  
-
   return (
     <Container>
       <div className="space-y-10 pb-10">
